@@ -12,6 +12,12 @@
 				"type": "INT",
 				"location": "query",
 				"required": true
+			},
+			{
+				"name": "date",
+				"type": "DATE",
+				"location": "query",
+				"required": true
 			}
 		]
 	}

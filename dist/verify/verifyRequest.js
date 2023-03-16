@@ -33,7 +33,9 @@ const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
         if (!verifyRequiredError) {
             errors.push((0, parseError_1.default)({
                 name: validation.name,
-                type: 'REQUIRED'
+                errorType: 'REQUIRED',
+                paramLocation: validation.location,
+                paramType: validation.type
             }));
             continue;
         }
@@ -45,7 +47,9 @@ const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
         if (!verifyValueError) {
             errors.push((0, parseError_1.default)({
                 name: validation.name,
-                type: 'INVALID_TYPE'
+                errorType: 'INVALID_TYPE',
+                paramLocation: validation.location,
+                paramType: validation.type
             }));
             continue;
         }

@@ -19,6 +19,6 @@ const verifyExpressInformation = (req, res, next) => __awaiter(void 0, void 0, v
     });
     if (!validation.error)
         return next();
-    return res.status(constants_1.DEFAULT_API_ERROR_CODE).json(validation.errorArray);
+    return res.status(constants_1.DEFAULT_API_ERROR_CODE).json(Object.assign(Object.assign({}, constants_1.DEFAULT_API_ERROR_RESPONSE), { errors: validation.errorArray }));
 });
 exports.default = verifyExpressInformation;

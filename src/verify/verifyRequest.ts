@@ -40,7 +40,8 @@ const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse>
 			errors.push(parseError({
 				name: validation.name,
 				errorType: 'REQUIRED',
-				paramLocation: validation.location
+				paramLocation: validation.location,
+				paramType: validation.type
 			}))
 			continue
 		}
@@ -53,7 +54,8 @@ const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse>
 			errors.push(parseError({
 				name: validation.name,
 				errorType: 'INVALID_TYPE',
-				paramLocation: validation.location
+				paramLocation: validation.location,
+				paramType: validation.type
 			}))
 			continue
 		}
