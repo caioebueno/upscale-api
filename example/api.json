@@ -2,14 +2,14 @@
 	"/query": {
 		"GET": [
 			{
-				"name": "ID",
+				"name": "id",
 				"type": "STRING",
 				"location": "query",
 				"required": true
 			},
 			{
 				"name": "age",
-				"type": "INT",
+				"type": "NUMBER",
 				"location": "query",
 				"required": true
 			},
