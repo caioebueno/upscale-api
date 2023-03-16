@@ -1,0 +1,18 @@
+{
+	"/query": {
+		"GET": [
+			{
+				"name": "ID",
+				"type": "STRING",
+				"location": "query",
+				"required": true
+			},
+			{
+				"name": "age",
+				"type": "INT",
+				"location": "query",
+				"required": true
+			}
+		]
+	}
+}
