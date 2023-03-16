@@ -13,7 +13,7 @@ const verifyValue = (data: TVerifyValueData): boolean => {
 	if (data.type === 'STRING') return verifyText({
 		value: data.value
 	})
-	if (data.type === 'INT') return verifyNumber({
+	if (data.type === 'NUMBER') return verifyNumber({
 		value: data.value
 	})
 	if (data.type === 'DATE') return verifyDate({

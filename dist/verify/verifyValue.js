@@ -8,7 +8,7 @@ const verifyValue = (data) => {
         return (0, verifyText_1.default)({
             value: data.value
         });
-    if (data.type === 'INT')
+    if (data.type === 'NUMBER')
         return (0, verifyNumber_1.default)({
             value: data.value
         });

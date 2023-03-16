@@ -1,5 +1,5 @@
 type TInformationLocation = 'params' | 'query' | 'body'
-type TInformationType = 'INT' | 'STRING' | 'DATE'
+type TInformationType = 'NUMBER' | 'STRING' | 'DATE'
 
 interface TValidation {
 	location: TInformationLocation
