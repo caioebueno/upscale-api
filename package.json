@@ -1,0 +1,28 @@
+{
+  "name": "upscale-api",
+  "version": "1.0.0",
+  "description": "Helps you create APIs in a fast and reliable way!",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/caioebueno/upscale-api.git"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "validation",
+    "json",
+    "fast",
+    "error",
+    "handling"
+  ],
+  "author": "Caio Bueno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioebueno/upscale-api/issues"
+  },
+  "homepage": "https://github.com/caioebueno/upscale-api#readme"
+}
