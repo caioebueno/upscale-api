@@ -1,23 +1,12 @@
 {
-	"/query": {
+	"/query/:id": {
 		"GET": [
 			{
 				"name": "id",
-				"type": "STRING",
-				"location": "query",
-				"required": true
-			},
-			{
-				"name": "age",
 				"type": "NUMBER",
-				"location": "query",
-				"required": true
-			},
-			{
-				"name": "date",
-				"type": "DATE",
-				"location": "query",
-				"required": true
+				"location": "body",
+				"required": false,
+				"nullable": false
 			}
 		]
 	}

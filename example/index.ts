@@ -14,8 +14,8 @@ app.use(cors({
 
 app.use(verifyExpressInformation)
 
-app.get('/query', (req, res) => {
-	res.send('response')
+app.get('/query/:id', (req, res) => {
+  res.send('Response')
 })
 
 const server = createServer(app)
