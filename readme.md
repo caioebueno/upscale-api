@@ -46,6 +46,8 @@ server.listen(PORT)
 	- Inside every route ovject you can set the method of the request GET | POST | PUT | DELETE
 	- In every method you can supply a list of validations with the following fields
 
+### Properties
+
 | Property | Type | Description |
 | -------- | ------- | ------- |
 | name | string | Name of the property |

@@ -1,6 +1,6 @@
 import { TInformationLocation, TInformationType } from "./validation"
 
-type TParameterErrorType = 'INVALID_TYPE' | 'REQUIRED'
+type TParameterErrorType = 'INVALID_TYPE' | 'REQUIRED' | 'NOT_NULLABLE'
 
 type TParameterError = {
 	name: string

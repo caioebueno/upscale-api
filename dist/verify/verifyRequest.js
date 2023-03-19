@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const getConfigFile_1 = require("../util/getConfigFile");
 const getRequestValue_1 = require("./getRequestValue");
+const isNull_1 = require("./isNull");
 const parseError_1 = require("./parseError");
 const verifyRequired_1 = require("./verifyRequired");
 const verifyValue_1 = require("./verifyValue");
@@ -27,6 +28,8 @@ const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
             request: data.request,
             validation: validation
         });
+        if (informationValue === undefined && !validation.required)
+            continue;
         const verifyRequiredError = (0, verifyRequired_1.default)({
             value: informationValue
         });
@@ -39,8 +42,16 @@ const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
             }));
             continue;
         }
+        if (!validation.nullable && (0, isNull_1.default)(informationValue)) {
+            errors.push((0, parseError_1.default)({
+                name: validation.name,
+                errorType: 'NOT_NULLABLE',
+                paramLocation: validation.location,
+                paramType: validation.type
+            }));
+            continue;
+        }
         const verifyValueError = (0, verifyValue_1.default)({
-            required: validation.required,
             type: validation.type,
             value: informationValue
         });

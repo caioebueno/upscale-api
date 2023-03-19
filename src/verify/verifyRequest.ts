@@ -2,6 +2,7 @@ import TParameterError from "../types/parameterError"
 import TRequest from "../types/request"
 import getConfigFile from "../util/getConfigFile"
 import getRequestValue from "./getRequestValue"
+import isNull from "./isNull"
 import parseError from "./parseError"
 import verifyRequired from "./verifyRequired"
 import verifyValue from "./verifyValue"
@@ -33,6 +34,7 @@ const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse>
 			request: data.request,
 			validation: validation
 		})
+		if(informationValue === undefined && !validation.required) continue
 		const verifyRequiredError = verifyRequired({
 			value: informationValue
 		})
@@ -45,8 +47,16 @@ const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse>
 			}))
 			continue
 		}
+		if(!validation.nullable && isNull(informationValue)) {
+			errors.push(parseError({
+				name: validation.name,
+				errorType: 'NOT_NULLABLE',
+				paramLocation: validation.location,
+				paramType: validation.type
+			}))
+			continue
+		}
 		const verifyValueError = verifyValue({
-			required: validation.required,
 			type: validation.type,
 			value: informationValue
 		})

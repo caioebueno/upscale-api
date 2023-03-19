@@ -1,11 +1,11 @@
 import { TInformationType } from "../types/validation"
+import isNull from "./isNull"
 import verifyDate from "./verifyDate"
 import verifyNumber from "./verifyNumber"
 import verifyText from "./verifyText"
 
 type TVerifyValueData = {
 	type: TInformationType
-	required: boolean
 	value: unknown
 }
 

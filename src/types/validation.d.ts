@@ -6,6 +6,7 @@ interface TValidation {
 	name: string
 	required: boolean
 	type: TInformationType
+	nullable: boolean
 }
 
 export default TValidation

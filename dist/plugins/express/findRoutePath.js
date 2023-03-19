@@ -9,18 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = require("../../constants");
-const verifyRequest_1 = require("../../verify/verifyRequest");
-const parseRequest_1 = require("./parseRequest");
-const verifyExpressInformation = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const parsedRequest = yield (0, parseRequest_1.default)(req);
-    if (!parsedRequest)
-        return next();
-    const validation = yield (0, verifyRequest_1.default)({
-        request: parsedRequest
-    });
-    if (!validation.error)
-        return next();
-    return res.status(constants_1.DEFAULT_API_ERROR_CODE).json(Object.assign(Object.assign({}, constants_1.DEFAULT_API_ERROR_RESPONSE), { errors: validation.errorArray }));
+const path_to_regexp_1 = require("path-to-regexp");
+const getConfigFile_1 = require("../../util/getConfigFile");
+const objectKeysIntoArray_1 = require("../../util/objectKeysIntoArray");
+const findRoutePath = (unparsedPath) => __awaiter(void 0, void 0, void 0, function* () {
+    const configFile = yield (0, getConfigFile_1.default)();
+    const pathsArray = (0, objectKeysIntoArray_1.default)(configFile);
+    for (const path of pathsArray) {
+        const pathRegex = (0, path_to_regexp_1.pathToRegexp)(path);
+        if (pathRegex.exec(unparsedPath) !== null)
+            return path;
+    }
+    return null;
 });
-exports.default = verifyExpressInformation;
+exports.default = findRoutePath;

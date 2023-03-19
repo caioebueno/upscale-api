@@ -21,4 +21,4 @@ interface TRequest {
 }
 
 export default TRequest
-export type { TRequestMethod }
+export type { TRequestMethod, TParams }

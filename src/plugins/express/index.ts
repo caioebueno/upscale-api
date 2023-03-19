@@ -4,7 +4,8 @@ import verifyRequest from '../../verify/verifyRequest'
 import parseRequest from './parseRequest'
 
 const verifyExpressInformation = async (req: Request, res: Response, next: NextFunction) => {
-	const parsedRequest = parseRequest(req)
+	const parsedRequest = await parseRequest(req)
+	if(!parsedRequest) return next()
 	const validation = await verifyRequest({
 		request: parsedRequest
 	})
