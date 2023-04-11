@@ -1,5 +1,5 @@
-import TParameterError from "../types/parameterError";
-import TRequest from "../types/request";
+import TParameterError from '../types/parameterError';
+import TRequest from '../types/request';
 type TVerifyData = {
     request: TRequest;
 };

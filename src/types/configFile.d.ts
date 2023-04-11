@@ -1,12 +1,12 @@
-import { TRequestMethod } from "./request"
-import TValidation from "./validation"
+import TValidation from './validation'
 
 interface TConfigFile {
 	[path: string]: TConfigFileMethod
 }
 
 type TConfigFileMethod = {
-	[method in TRequestMethod]: TValidation[]
+	[method: string]: TValidation[]
 }
 
 export default TConfigFile
+export { TConfigFileMethod }

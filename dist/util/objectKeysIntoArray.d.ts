@@ -1,4 +1,4 @@
 declare const objectKeysIntoArray: (data: {
-    [key: string]: any;
+    [key: string]: unknown;
 }) => string[];
 export default objectKeysIntoArray;

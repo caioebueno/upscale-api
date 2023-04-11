@@ -1,5 +1,5 @@
-import TRequest from "../types/request";
-import TValidation from "../types/validation";
+import TRequest from '../types/request';
+import TValidation from '../types/validation';
 type TGetRequestValue = {
     request: TRequest;
     validation: TValidation;

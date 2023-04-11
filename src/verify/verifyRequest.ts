@@ -1,11 +1,10 @@
-import TParameterError from "../types/parameterError"
-import TRequest from "../types/request"
-import getConfigFile from "../util/getConfigFile"
-import getRequestValue from "./getRequestValue"
-import isNull from "./isNull"
-import parseError from "./parseError"
-import verifyRequired from "./verifyRequired"
-import verifyValue from "./verifyValue"
+import TParameterError from '../types/parameterError'
+import TRequest from '../types/request'
+import getRequestValue from './getRequestValue'
+import isNull from './isNull'
+import parseError from './parseError'
+import verifyRequired from './verifyRequired'
+import verifyValue from './verifyValue'
 
 type TVerifyData = {
 	request: TRequest
@@ -24,12 +23,10 @@ type TVerifyRequestResponseNoError = {
 
 const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse> => {
 	const errors: TParameterError[] = []
-	const configFile = await getConfigFile()
-	const routeValidations = configFile[data.request.path] && configFile[data.request.path][data.request.method]
-	if (!routeValidations) return {
+	if (!data.request.validations) return {
 		error: false
 	}
-	for (const validation of routeValidations) {
+	for (const validation of data.request.validations) {
 		const informationValue = getRequestValue({
 			request: data.request,
 			validation: validation
@@ -58,14 +55,16 @@ const verifyRequest = async (data: TVerifyData): Promise<TVerifyRequestResponse>
 		}
 		const verifyValueError = verifyValue({
 			type: validation.type,
-			value: informationValue
+			value: informationValue,
+			onOf: validation.onOf
 		})
-		if (!verifyValueError) {
+		if (verifyValueError.hasError) {
 			errors.push(parseError({
 				name: validation.name,
 				errorType: 'INVALID_TYPE',
 				paramLocation: validation.location,
-				paramType: validation.type
+				paramType: validation.type,
+				allowedValues: verifyValueError.allowedValues
 			}))
 			continue
 		}

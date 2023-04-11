@@ -5,7 +5,8 @@ const parseError = (data) => {
         name: data.name,
         errorType: data.errorType,
         paramLocation: data.paramLocation,
-        paramType: data.paramType
+        paramType: data.paramType,
+        allowedValues: data.allowedValues
     };
 };
 exports.default = parseError;

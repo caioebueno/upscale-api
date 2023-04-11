@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getConfigFile_1 = require("../util/getConfigFile");
 const getRequestValue_1 = require("./getRequestValue");
 const isNull_1 = require("./isNull");
 const parseError_1 = require("./parseError");
@@ -17,13 +16,11 @@ const verifyRequired_1 = require("./verifyRequired");
 const verifyValue_1 = require("./verifyValue");
 const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
     const errors = [];
-    const configFile = yield (0, getConfigFile_1.default)();
-    const routeValidations = configFile[data.request.path] && configFile[data.request.path][data.request.method];
-    if (!routeValidations)
+    if (!data.request.validations)
         return {
             error: false
         };
-    for (const validation of routeValidations) {
+    for (const validation of data.request.validations) {
         const informationValue = (0, getRequestValue_1.default)({
             request: data.request,
             validation: validation
@@ -53,14 +50,16 @@ const verifyRequest = (data) => __awaiter(void 0, void 0, void 0, function* () {
         }
         const verifyValueError = (0, verifyValue_1.default)({
             type: validation.type,
-            value: informationValue
+            value: informationValue,
+            onOf: validation.onOf
         });
-        if (!verifyValueError) {
+        if (verifyValueError.hasError) {
             errors.push((0, parseError_1.default)({
                 name: validation.name,
                 errorType: 'INVALID_TYPE',
                 paramLocation: validation.location,
-                paramType: validation.type
+                paramType: validation.type,
+                allowedValues: verifyValueError.allowedValues
             }));
             continue;
         }

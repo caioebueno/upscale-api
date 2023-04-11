@@ -9,21 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const findRoutePath_1 = require("./findRoutePath");
+const findRoutePath_1 = require("../../util/findRoutePath");
 const extractRouteParams_1 = require("./extractRouteParams");
 const parseRequest = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const path = yield (0, findRoutePath_1.default)(req.path);
-    if (!path)
+    const findRoute = yield (0, findRoutePath_1.default)(req.path, req.method);
+    if (!findRoute)
         return null;
     const request = {
         body: req.body,
         method: req.method,
         params: (0, extractRouteParams_1.default)({
             path: req.path,
-            pathTemplate: path
+            pathTemplate: findRoute.path
         }),
-        path,
-        query: req.query
+        path: findRoute.path,
+        query: req.query,
+        validations: findRoute.validations
     };
     return request;
 });

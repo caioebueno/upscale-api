@@ -1,6 +1,6 @@
-import { readFile } from "fs/promises"
-import { DEFAULT_CONFIG_FILE_PATH } from "../constants"
-import TConfigFile from "../types/configFile"
+import { readFile } from 'fs/promises'
+import { DEFAULT_CONFIG_FILE_PATH } from '../constants'
+import TConfigFile from '../types/configFile'
 
 const getConfigFile = async () => {
 	const configFile = await readFile(DEFAULT_CONFIG_FILE_PATH, 'utf8')

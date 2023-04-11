@@ -1,7 +1,16 @@
-import { TInformationType } from "../types/validation";
+import { TInformationType } from '../types/validation';
 type TVerifyValueData = {
     type: TInformationType;
     value: unknown;
+    onOf?: string[];
 };
-declare const verifyValue: (data: TVerifyValueData) => boolean;
+type TVerifyValueResponse = TVerifyValuetError | TVerifyValueoodResponse;
+type TVerifyValueoodResponse = {
+    hasError: false;
+};
+type TVerifyValuetError = {
+    hasError: true;
+    allowedValues?: string[];
+};
+declare const verifyValue: (data: TVerifyValueData) => TVerifyValueResponse;
 export default verifyValue;

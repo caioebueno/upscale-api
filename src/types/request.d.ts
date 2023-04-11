@@ -1,3 +1,5 @@
+import TValidation from './validation'
+
 type TBody =  {
 	[key: string]: unknown
 }
@@ -17,7 +19,8 @@ interface TRequest {
 	method: TRequestMethod,
 	query: TQuery,
 	body: TBody,
-	params: TParams
+	params: TParams,
+	validations: TValidation[]
 }
 
 export default TRequest

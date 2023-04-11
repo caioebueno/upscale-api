@@ -4,6 +4,7 @@ type TInformationType = 'NUMBER' | 'STRING' | 'DATE'
 interface TValidation {
 	location: TInformationLocation
 	name: string
+	onOf?: string[]
 	required: boolean
 	type: TInformationType
 	nullable: boolean

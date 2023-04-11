@@ -8,18 +8,18 @@ const PORT = 8888
 
 app.use(express.json())
 app.use(cors({
-  origin: true,
-  credentials: true
+	origin: true,
+	credentials: true
 }))
 
 app.use(verifyExpressInformation)
 
-app.get('/query/:id', (req, res) => {
-  res.send('Response')
+app.get('/query', (req, res) => {
+	res.send('Response')
 })
 
 const server = createServer(app)
 
 server.listen(PORT, () => {
-  console.log('Server started')
+	console.log('Server started')
 })

@@ -1,6 +1,6 @@
 const objectKeysIntoArray = (
 	data: {
-		[key: string]: any
+		[key: string]: unknown
 	}
 ): string[] => {
 	const keys: string[] = []

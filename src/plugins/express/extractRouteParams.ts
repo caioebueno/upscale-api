@@ -1,5 +1,5 @@
-import { match } from "path-to-regexp"
-import { TParams } from "../../types/request"
+import { match } from 'path-to-regexp'
+import { TParams } from '../../types/request'
 
 type TExtractRouteParamsData = {
 	pathTemplate: string

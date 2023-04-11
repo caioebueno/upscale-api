@@ -1,11 +1,12 @@
 {
-	"/query/:id": {
+	"/query": {
 		"GET": [
 			{
-				"name": "id",
-				"type": "NUMBER",
-				"location": "body",
-				"required": false,
+				"name": "type",
+				"type": "STRING",
+				"onOf": ["ON", "OFF"],
+				"location": "query",
+				"required": true,
 				"nullable": false
 			}
 		]

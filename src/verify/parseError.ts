@@ -1,11 +1,12 @@
-import TParameterError, { TParameterErrorType } from "../types/parameterError"
-import { TInformationLocation, TInformationType } from "../types/validation"
+import TParameterError, { TParameterErrorType } from '../types/parameterError'
+import { TInformationLocation, TInformationType } from '../types/validation'
 
 type TParseError = {
 	name: string
 	errorType: TParameterErrorType
 	paramLocation: TInformationLocation
 	paramType: TInformationType
+	allowedValues?: string[]
 }
 
 const parseError = (data: TParseError): TParameterError => {
@@ -13,7 +14,8 @@ const parseError = (data: TParseError): TParameterError => {
 		name: data.name,
 		errorType: data.errorType,
 		paramLocation: data.paramLocation,
-		paramType: data.paramType
+		paramType: data.paramType,
+		allowedValues: data.allowedValues
 	}
 }
 

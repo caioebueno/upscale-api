@@ -1,4 +1,4 @@
-import { TParams } from "../../types/request";
+import { TParams } from '../../types/request';
 type TExtractRouteParamsData = {
     pathTemplate: string;
     path: string;
