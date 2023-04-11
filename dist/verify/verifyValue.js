@@ -11,13 +11,13 @@ const verifyValue = (data) => {
         });
     if (data.type === 'NUMBER')
         return {
-            hasError: (0, verifyNumber_1.default)({
+            hasError: !(0, verifyNumber_1.default)({
                 value: data.value
             })
         };
     if (data.type === 'DATE')
         return {
-            hasError: (0, verifyDate_1.default)({
+            hasError: !(0, verifyDate_1.default)({
                 value: data.value
             })
         };

@@ -2,9 +2,8 @@
 	"/query": {
 		"GET": [
 			{
-				"name": "type",
-				"type": "STRING",
-				"onOf": ["ON", "OFF"],
+				"name": "id",
+				"type": "NUMBER",
 				"location": "query",
 				"required": true,
 				"nullable": false

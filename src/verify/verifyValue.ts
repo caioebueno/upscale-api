@@ -26,12 +26,12 @@ const verifyValue = (data: TVerifyValueData): TVerifyValueResponse => {
 		onOf: data.onOf
 	})
 	if (data.type === 'NUMBER') return {
-		hasError: verifyNumber({
+		hasError: !verifyNumber({
 			value: data.value
 		})
 	}
 	if (data.type === 'DATE') return {
-		hasError: verifyDate({
+		hasError: !verifyDate({
 			value: data.value
 		})
 	}
