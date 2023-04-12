@@ -15,7 +15,6 @@ const objectKeysIntoArray_1 = require("./objectKeysIntoArray");
 const findRoutePath = (unparsedPath, method) => __awaiter(void 0, void 0, void 0, function* () {
     const configFile = yield (0, getConfigFile_1.default)();
     const findPath = iteratePaths(configFile, unparsedPath, method);
-    console.log('Found path:', findPath);
     return findPath;
 });
 const iteratePaths = (data, unparsedPath, method) => {

@@ -10,7 +10,6 @@ const findRoutePath = async (unparsedPath: string, method: string): Promise<{
 } | null> => {
 	const configFile = await getConfigFile()
 	const findPath =  iteratePaths(configFile, unparsedPath, method)
-	console.log('Found path:', findPath)
 	return findPath
 }
 
